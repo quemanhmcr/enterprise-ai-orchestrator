@@ -6,26 +6,26 @@
 Đây là hệ thống AI cấp doanh nghiệp (Enterprise-grade), sẵn sàng cho môi trường production, được thiết kế theo tiêu chuẩn Big Tech:
 - **6 Đội Ngũ (Crews):** 1 CEO Điều Phối + 5 Đội Ngũ Chuyên Môn (Kinh doanh, Sản phẩm, Vận hành, Tài chính, Marketing).
 - **Tính Năng Nâng Cao:** Tích hợp Memory (Bộ nhớ), Knowledge (Tri thức), Flows (Luồng xử lý), Guardrails (Kiểm soát an toàn).
-- **Sẵn Sàng Production:** Hỗ trợ GitOps, Kubernetes, Temporal workflow.
-- **Kiến Trúc Hướng Sự Kiện:** Điều phối dựa trên Flow với khả năng quản lý trạng thái (State Management) mạnh mẽ.
+- **Sẵn Sàng Production:** Hỗ trợ Docker containerization, CI/CD pipeline, và cấu trúc dự án tiêu chuẩn.
+- **Kiến Trúc Tập Trung:** CEO Crew đóng vai trò trung tâm, điều phối các đội ngũ chuyên môn thông qua cơ chế Tool-use.
 
 ## 📁 Cấu Trúc Dự Án
 
 ```
 enterprise_business_system/
- crews/                          # Triển khai các đội ngũ AI
-    ceo_crew/                  # CEO Orchestrator (Điều phối)
-    market_research_crew/      # Nghiên cứu thị trường
-    product_development_crew/  # Phát triển sản phẩm
-    sales_marketing_crew/      # Kinh doanh & Tiếp thị
-    operations_crew/           # Vận hành
-    finance_crew/              # Tài chính
- flows/                         # Luồng điều phối (Orchestration Flows)
- shared/                        # Tài nguyên chia sẻ (Memory, Tools, Utils)
- config/                        # Cấu hình hệ thống (LLM, Env)
- deployment/                    # Cấu hình triển khai (Docker, K8s)
- tests/                         # Unit & Integration Tests
- main.py                        # Điểm khởi chạy chính
+├── crews/                          # Triển khai các đội ngũ AI
+│   ├── ceo_crew/                  # CEO Orchestrator (Điều phối)
+│   ├── market_research_crew/      # Nghiên cứu thị trường
+│   ├── product_development_crew/  # Phát triển sản phẩm
+│   ├── sales_marketing_crew/      # Kinh doanh & Tiếp thị
+│   ├── operations_crew/           # Vận hành
+│   └── finance_crew/              # Tài chính
+├── shared/                        # Tài nguyên chia sẻ (Memory, Tools, Utils)
+├── .github/                       # CI/CD Workflows
+├── tests/                         # Unit & Integration Tests
+├── Dockerfile                     # Cấu hình Docker
+├── Makefile                       # Các lệnh tiện ích
+└── main.py                        # Điểm khởi chạy chính
 ```
 
 ## 🎯 Tổng Quan Các Đội Ngũ AI
@@ -82,11 +82,11 @@ python main.py --crew market_research --input "Phân tích thị trường xe đ
 
 **Môi Trường Production:**
 ```bash
-# Triển khai với Docker Compose
-docker-compose up -d
+# Build Docker Image
+make docker-build
 
-# Triển khai lên Kubernetes
-kubectl apply -f deployment/kubernetes/
+# Run Docker Container
+make docker-run
 ```
 
 ## 🧪 Kiểm Thử (Testing)
@@ -104,7 +104,7 @@ pytest --cov=crews --cov=flows tests/
 -   **Core Framework:** CrewAI (Multi-agent Orchestration)
 -   **LLM Interface:** LiteLLM
 -   **Vector Database:** ChromaDB
--   **Infrastructure:** Docker, Kubernetes, Temporal
+-   **Infrastructure:** Docker, GitHub Actions (CI/CD)
 -   **Monitoring:** Prometheus, Grafana
 
 ---
