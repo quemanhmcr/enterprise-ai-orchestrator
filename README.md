@@ -1,9 +1,9 @@
-﻿# Đội Ngũ Agent AI Cho Doanh Nghiệp (Enterprise AI Agents)
+﻿# Hệ Thống Agent AI Hỗ Trợ Kinh Doanh (Business Support AI Agents)
 **Mô Hình Điều Phối Đa Đội Ngũ với CEO AI**
 
 ## 🏗️ Tổng Quan Kiến Trúc
 
-Đây là hệ thống mô phỏng đội ngũ nhân sự AI cấp doanh nghiệp (Enterprise-grade), được thiết kế theo tiêu chuẩn Big Tech:
+Đây là hệ thống các Agent AI hỗ trợ hoạt động kinh doanh cấp doanh nghiệp (Enterprise-grade), được thiết kế theo tiêu chuẩn Big Tech:
 - **6 Đội Ngũ (Crews):** 1 CEO Điều Phối + 5 Đội Ngũ Chuyên Môn (Kinh doanh, Sản phẩm, Vận hành, Tài chính, Marketing).
 - **Tính Năng Nâng Cao:** Tích hợp Memory (Bộ nhớ), Knowledge (Tri thức), Flows (Luồng xử lý), Guardrails (Kiểm soát an toàn).
 - **Hạ Tầng Kỹ Thuật:** Hỗ trợ Docker containerization, CI/CD pipeline, và cấu trúc dự án tiêu chuẩn.
