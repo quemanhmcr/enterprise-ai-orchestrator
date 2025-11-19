@@ -13,9 +13,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Import CrewAI components
-from crewai import LLM, Agent, Crew, Task
+from crewai import LLM, Agent, Crew, Task  # noqa: E402
 
-from shared.tools.internal_doc_rag_tool import create_internal_doc_rag_tool
+from shared.tools.internal_doc_rag_tool import create_internal_doc_rag_tool  # noqa: E402
 
 
 def example_basic_usage():

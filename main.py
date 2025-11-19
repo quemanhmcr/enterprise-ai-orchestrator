@@ -12,7 +12,7 @@ from pathlib import Path
 crews_path = Path(__file__).parent / 'crews'
 sys.path.insert(0, str(crews_path))
 
-from ceo_crew.ceo_crew import run_ceo_orchestration
+from ceo_crew.ceo_crew import run_ceo_orchestration  # noqa: E402
 
 
 def print_banner():
@@ -315,7 +315,14 @@ def main():
     # Create mutually exclusive group for commands
     group = parser.add_mutually_exclusive_group()
     group.add_argument("--orchestrate", action="store_true", help="Run the full CEO orchestration flow")
-    group.add_argument("--crew", type=str, help="Run a single crew (ceo, market_research, product_development, sales_marketing, operations, finance)")
+    group.add_argument(
+        "--crew",
+        type=str,
+        help=(
+            "Run a single crew (ceo, market_research, product_development, "
+            "sales_marketing, operations, finance)"
+        ),
+    )
 
     # Add input argument
     parser.add_argument("--input", type=str, help="Custom input/goal/request for the crew or orchestration")

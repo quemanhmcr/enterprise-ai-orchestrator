@@ -220,7 +220,10 @@ class InternalDocRAGTool(BaseTool):
             return result
 
         except Exception as e:
-            return f"Error querying internal documents: {str(e)}\n\nPlease ensure documents are available in {self.documents_dir}"
+            return (
+                f"Error querying internal documents: {str(e)}\n\n"
+                f"Please ensure documents are available in {self.documents_dir}"
+            )
 
     def add_documents(self, file_paths: List[str]) -> str:
         """

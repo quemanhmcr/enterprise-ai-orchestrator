@@ -45,7 +45,10 @@ class BaseCrewTool(BaseTool):
 
 class MarketResearchCrewTool(BaseCrewTool):
     name: str = "Market Research Crew"
-    description: str = "Delegate market research tasks. Useful for analyzing competitors, market trends, and consumer insights."
+    description: str = (
+        "Delegate market research tasks. Useful for analyzing competitors, "
+        "market trends, and consumer insights."
+    )
 
     def _run(self, request: str, context: str = None) -> str:
         inputs = {
