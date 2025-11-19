@@ -1,8 +1,9 @@
+import os
+import sys
+from typing import Any, Dict, Optional, Type
+
 from crewai.tools import BaseTool
 from pydantic import BaseModel, Field
-from typing import Dict, Any, Optional, Type
-import sys
-import os
 
 # Ensure the crews directory is in the path if not already
 # This helps if running this file directly or from a different context
@@ -25,16 +26,16 @@ class BaseCrewTool(BaseTool):
             # Dynamic import
             module = __import__(crew_module_name, fromlist=[crew_class_name])
             crew_class = getattr(module, crew_class_name)
-            
+
             # Instantiate the crew
             crew_instance = crew_class()
-            
+
             # Check if it has a crew() method (CrewBase style) or if it is the crew itself
             if hasattr(crew_instance, 'crew'):
                 crew = crew_instance.crew()
             else:
                 crew = crew_instance
-            
+
             # Run the crew
             return crew.kickoff(inputs=inputs)
         except ImportError as e:

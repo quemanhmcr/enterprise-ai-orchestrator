@@ -1,39 +1,38 @@
+from pathlib import Path
+
 from crewai import Agent, Crew, Process, Task
 from crewai.project import CrewBase, agent, crew, task
-import yaml
-import os
-from pathlib import Path
 
 # Import the tools
 try:
     from shared.tools.crew_tools import (
+        FinanceCrewTool,
+        HRCrewTool,
         MarketResearchCrewTool,
+        OperationsCrewTool,
         ProductDevelopmentCrewTool,
         SalesMarketingCrewTool,
-        OperationsCrewTool,
-        FinanceCrewTool,
-        HRCrewTool
     )
 except ImportError:
     # Fallback for direct execution or different path structure
     import sys
     sys.path.append(str(Path(__file__).parent.parent.parent))
     from shared.tools.crew_tools import (
+        FinanceCrewTool,
+        HRCrewTool,
         MarketResearchCrewTool,
+        OperationsCrewTool,
         ProductDevelopmentCrewTool,
         SalesMarketingCrewTool,
-        OperationsCrewTool,
-        FinanceCrewTool,
-        HRCrewTool
     )
 
 @CrewBase
 class CeoCrew():
     """CEO Crew - Strategic Orchestration"""
-    
+
     agents_config = 'config/agents.yaml'
     tasks_config = 'config/tasks.yaml'
-    
+
     def __init__(self):
         # Initialize tools
         self.market_research_tool = MarketResearchCrewTool()
@@ -42,7 +41,7 @@ class CeoCrew():
         self.operations_tool = OperationsCrewTool()
         self.finance_tool = FinanceCrewTool()
         self.hr_tool = HRCrewTool()
-        
+
     @agent
     def ceo(self) -> Agent:
         return Agent(
@@ -58,20 +57,20 @@ class CeoCrew():
             verbose=True,
             allow_delegation=True
         )
-    
+
     @task
     def manage_company_strategy(self) -> Task:
         return Task(
             config=self.tasks_config['manage_company_strategy'],
             agent=self.ceo()
         )
-    
+
     @crew
     def crew(self) -> Crew:
         """Creates the CEO Crew"""
         return Crew(
-            agents=self.agents, 
-            tasks=self.tasks, 
+            agents=self.agents,
+            tasks=self.tasks,
             process=Process.sequential,
             verbose=True,
         )
