@@ -1,12 +1,12 @@
-﻿# Hệ Thống AI Doanh Nghiệp (Enterprise Business AI System)
-**Điều Phối Đa Đội Ngũ với CEO AI**
+﻿# Đội Ngũ Agent AI Cho Doanh Nghiệp (Enterprise AI Agents)
+**Mô Hình Điều Phối Đa Đội Ngũ với CEO AI**
 
 ## 🏗️ Tổng Quan Kiến Trúc
 
-Đây là hệ thống AI cấp doanh nghiệp (Enterprise-grade), sẵn sàng cho môi trường production, được thiết kế theo tiêu chuẩn Big Tech:
+Đây là hệ thống mô phỏng đội ngũ nhân sự AI cấp doanh nghiệp (Enterprise-grade), được thiết kế theo tiêu chuẩn Big Tech:
 - **6 Đội Ngũ (Crews):** 1 CEO Điều Phối + 5 Đội Ngũ Chuyên Môn (Kinh doanh, Sản phẩm, Vận hành, Tài chính, Marketing).
 - **Tính Năng Nâng Cao:** Tích hợp Memory (Bộ nhớ), Knowledge (Tri thức), Flows (Luồng xử lý), Guardrails (Kiểm soát an toàn).
-- **Sẵn Sàng Production:** Hỗ trợ Docker containerization, CI/CD pipeline, và cấu trúc dự án tiêu chuẩn.
+- **Hạ Tầng Kỹ Thuật:** Hỗ trợ Docker containerization, CI/CD pipeline, và cấu trúc dự án tiêu chuẩn.
 - **Kiến Trúc Tập Trung:** CEO Crew đóng vai trò trung tâm, điều phối các đội ngũ chuyên môn thông qua cơ chế Tool-use.
 
 ## 📁 Cấu Trúc Dự Án
@@ -80,7 +80,7 @@ python main.py --orchestrate --input "Xây dựng chiến lược mở rộng th
 python main.py --crew market_research --input "Phân tích thị trường xe điện tại Việt Nam"
 ```
 
-**Môi Trường Production:**
+**Triển Khai (Deployment):**
 ```bash
 # Build Docker Image
 make docker-build
