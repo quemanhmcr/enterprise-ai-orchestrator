@@ -1,0 +1,35 @@
+tasks:
+  research_policy:
+    description: |
+      An employee has asked: {employee_question}
+      
+      Use the Internal Document RAG tool to search company policy documents
+      and find accurate, specific information to answer this question.
+      
+      Be thorough and cite specific policies, dates, numbers, and conditions.
+    expected_output: |
+      A detailed research report including:
+      1. Direct answer to the employee's question
+      2. Specific policy details (numbers, percentages, dates, conditions)
+      3. Any exceptions or special cases
+      4. Related policies the employee should know about
+      5. Citations from company documents
+
+  format_employee_response:
+    description: |
+      Take the policy research from the HR Policy Expert and format it into
+      a clear, friendly response for the employee.
+      
+      Guidelines:
+      - Use simple, professional language
+      - Structure with clear sections and bullet points
+      - Include all important details but avoid overwhelming
+      - End with next steps or how to get more help if needed
+    expected_output: |
+      A well-formatted employee response with:
+      - Greeting and acknowledgment of question
+      - Clear answer in bullet points or numbered list
+      - Important details highlighted
+      - Any conditions or exceptions noted
+      - Next steps or additional resources
+      - Professional closing

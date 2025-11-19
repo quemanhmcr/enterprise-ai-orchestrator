@@ -1,0 +1,171 @@
+operations_optimization:
+  description: >
+    Analyze current operations and develop optimization plan for {quarter}.
+    
+    Assess:
+    1. Current operational metrics and KPIs
+    2. Process bottlenecks and inefficiencies
+    3. Resource utilization and capacity planning
+    4. Technology and automation opportunities
+    5. Cost structure analysis
+    
+    Develop:
+    - Operational improvement roadmap
+    - Automation and digital transformation initiatives
+    - Resource optimization plan
+    - Cost reduction targets
+    - Performance metrics and dashboards
+    
+    Deliverable: Comprehensive operations optimization plan.
+  expected_output: >
+    Operations plan including:
+    - Current state assessment with key metrics
+    - Process improvement opportunities (ranked by impact)
+    - Automation roadmap with ROI analysis
+    - Resource optimization recommendations
+    - Cost reduction targets ($500K+ savings)
+    - Technology investments required
+    - Implementation timeline and milestones
+    - Risk assessment and change management plan
+    - KPIs and success metrics
+  agent: operations_manager
+  output_file: outputs/operations_plan_{quarter}.md
+
+supply_chain_management:
+  description: >
+    Optimize supply chain for {quarter} focusing on reliability, cost, and resilience.
+    
+    Analyze:
+    1. Demand forecasting and inventory optimization
+    2. Supplier performance and risk assessment
+    3. Logistics and distribution efficiency
+    4. Working capital tied up in inventory
+    5. Supply chain vulnerabilities
+    
+    Optimize:
+    - Inventory levels (reduce by 15% while maintaining service)
+    - Supplier diversification strategy
+    - Logistics cost reduction
+    - Lead time improvement
+    - Supply chain risk mitigation
+    
+    Deliverable: Supply chain optimization strategy.
+  expected_output: >
+    Supply chain plan containing:
+    - Demand forecast for {quarter}
+    - Inventory optimization recommendations
+    - Supplier scorecard and rationalization plan
+    - Logistics network optimization
+    - Working capital improvement targets
+    - Supply chain risk matrix
+    - Contingency plans for disruptions
+    - Technology enablers (WMS, TMS, etc.)
+    - Cost savings projections
+    - Performance metrics (OTIF, inventory turns, etc.)
+  agent: supply_chain_analyst
+  context:
+    - operations_optimization
+  async_execution: true
+
+process_improvement:
+  description: >
+    Conduct process analysis and design improvement initiatives using Lean Six Sigma.
+    
+    Methodology:
+    1. Process mapping (current state)
+    2. Value stream analysis
+    3. Waste identification (8 wastes of Lean)
+    4. Root cause analysis (5 Whys, Fishbone)
+    5. Future state design
+    6. Implementation roadmap
+    
+    Focus Areas:
+    - Cycle time reduction
+    - Quality improvement
+    - Cost reduction
+    - Customer satisfaction
+    
+    Deliverable: Process improvement project portfolio.
+  expected_output: >
+    Process improvement plan including:
+    - Process maps (current and future state)
+    - Value stream analysis results
+    - Waste identification and quantification
+    - Root cause analysis for top issues
+    - Improvement project charters (5-7 projects)
+    - Expected benefits (time, cost, quality)
+    - Resource requirements
+    - Implementation timeline
+    - Change management approach
+    - Metrics and control plan
+  agent: process_engineer
+  context:
+    - operations_optimization
+  async_execution: true
+
+quality_management:
+  description: >
+    Develop quality management strategy to ensure excellence and compliance.
+    
+    Quality Systems:
+    1. Quality management system (ISO 9001) assessment
+    2. Quality metrics and defect analysis
+    3. Audit and compliance schedule
+    4. Corrective and preventive actions (CAPA)
+    5. Continuous improvement culture
+    
+    Ensure:
+    - Product/service quality standards
+    - Regulatory compliance
+    - Customer satisfaction
+    - Cost of quality reduction
+    
+    Deliverable: Quality management plan.
+  expected_output: >
+    Quality plan containing:
+    - Quality policy and objectives
+    - Quality metrics dashboard (defect rates, CAPA, etc.)
+    - Internal audit schedule
+    - Compliance checklist (ISO, industry regulations)
+    - Quality training and certification plan
+    - Supplier quality management
+    - Cost of quality analysis
+    - Quality improvement initiatives
+    - Customer feedback integration
+    - Quality control procedures
+  agent: quality_controller
+  context:
+    - operations_optimization
+
+operations_synthesis:
+  description: >
+    Synthesize all operations outputs into executive summary.
+    
+    Consolidate:
+    1. Operations optimization highlights
+    2. Supply chain improvements
+    3. Process improvement projects
+    4. Quality management initiatives
+    5. Cost savings and efficiency gains
+    6. Resource and budget requirements
+    
+    Create executive summary for leadership.
+  expected_output: >
+    Operations executive summary including:
+    - Operational performance overview for {quarter}
+    - Key improvement initiatives (top 10)
+    - Cost reduction targets and savings roadmap
+    - Supply chain optimization benefits
+    - Process improvement project portfolio
+    - Quality and compliance status
+    - Technology and automation investments
+    - Resource requirements (headcount, budget)
+    - Risk factors and mitigation
+    - Performance metrics and KPIs
+  agent: operations_manager
+  context:
+    - operations_optimization
+    - supply_chain_management
+    - process_improvement
+    - quality_management
+  output_file: outputs/operations_summary_{quarter}.md

@@ -1,0 +1,10 @@
+manage_company_strategy:
+  description: >
+    Review the current business request: {request}.
+    Decide which departments (crews) need to be involved to fulfill this request.
+    Use the available tools to delegate tasks to the specific crews.
+    Synthesize the reports from the different crews into a cohesive final strategy or answer.
+  expected_output: >
+    A comprehensive executive summary and detailed plan addressing the business request,
+    incorporating findings and outputs from the relevant departments.
+  agent: ceo

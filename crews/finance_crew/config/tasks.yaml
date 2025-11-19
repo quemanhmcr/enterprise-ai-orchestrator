@@ -1,0 +1,171 @@
+financial_planning:
+  description: >
+    Develop comprehensive financial plan for {quarter} including forecasts, targets, and capital allocation.
+    
+    Financial Planning:
+    1. Revenue and expense forecasting
+    2. Cash flow projections
+    3. P&L, balance sheet, and cash flow statements
+    4. Scenario analysis (base, upside, downside)
+    5. Capital allocation strategy
+    6. Working capital management
+    
+    Targets:
+    - Revenue: ${revenue_target}
+    - EBITDA margin: {ebitda_margin}%
+    - Free cash flow: ${fcf_target}
+    
+    Deliverable: Comprehensive financial plan with forecasts and strategic recommendations.
+  expected_output: >
+    Financial plan including:
+    - Income statement forecast (P&L)
+    - Balance sheet projections
+    - Cash flow statement
+    - Scenario analysis (3 scenarios)
+    - Key financial metrics (revenue, EBITDA, FCF, margins)
+    - Capital allocation recommendations
+    - Working capital optimization
+    - Investment priorities
+    - Sensitivity analysis
+    - Financial risks and mitigation
+  agent: cfo
+  output_file: outputs/financial_plan_{quarter}.md
+
+financial_analysis:
+  description: >
+    Conduct detailed financial analysis to support strategic decision-making.
+    
+    Analysis:
+    1. Variance analysis (actual vs budget vs forecast)
+    2. Profitability analysis by segment/product
+    3. Unit economics and cohort analysis
+    4. Customer acquisition cost (CAC) and lifetime value (LTV)
+    5. Financial ratios and benchmarking
+    6. Return on Investment (ROI) for initiatives
+    
+    Insights:
+    - Revenue drivers and trends
+    - Cost structure optimization
+    - Margin improvement opportunities
+    - Investment ROI analysis
+    
+    Deliverable: Financial analysis report with actionable insights.
+  expected_output: >
+    Financial analysis containing:
+    - Variance analysis commentary
+    - Segment profitability breakdown
+    - Unit economics metrics
+    - CAC payback period and LTV:CAC ratio
+    - Financial ratios (liquidity, efficiency, profitability)
+    - Peer benchmarking comparison
+    - ROI analysis for major initiatives
+    - Margin waterfall analysis
+    - Key insights and recommendations
+    - Data visualization and dashboards
+  agent: financial_analyst
+  context:
+    - financial_planning
+  async_execution: true
+
+budget_management:
+  description: >
+    Manage budget for {quarter} ensuring alignment with strategic goals and spend discipline.
+    
+    Budget Process:
+    1. Budget allocation by department
+    2. Headcount and compensation planning
+    3. CapEx and OpEx budgets
+    4. Vendor and contract management
+    5. Budget tracking and variance monitoring
+    6. Reforecasting process
+    
+    Controls:
+    - Approval workflows
+    - Spend limits and escalations
+    - Purchase order management
+    - Cost optimization initiatives
+    
+    Deliverable: Budget plan with controls and monitoring framework.
+  expected_output: >
+    Budget plan including:
+    - Department budget allocation
+    - Headcount plan and compensation budget
+    - CapEx vs OpEx breakdown
+    - Vendor spend analysis
+    - Budget vs actual tracking methodology
+    - Variance thresholds and escalation process
+    - Cost savings initiatives ($200K+ target)
+    - Budget approval matrix
+    - Reforecast schedule
+    - Budget compliance metrics
+  agent: budget_controller
+  context:
+    - financial_planning
+  async_execution: true
+
+compliance_and_controls:
+  description: >
+    Ensure financial compliance and strengthen internal controls.
+    
+    Compliance:
+    1. Regulatory requirements (SOX, GAAP, tax)
+    2. Internal control framework (COSO)
+    3. Audit readiness (internal and external)
+    4. Policy and procedure documentation
+    5. Fraud prevention and detection
+    
+    Controls:
+    - Segregation of duties
+    - Authorization and approval controls
+    - Reconciliation processes
+    - Financial reporting controls
+    
+    Deliverable: Compliance and controls assessment with recommendations.
+  expected_output: >
+    Compliance report containing:
+    - Regulatory compliance checklist
+    - Internal controls assessment (COSO framework)
+    - Audit preparation plan
+    - Control deficiencies and remediation
+    - Policy updates required
+    - Fraud risk assessment
+    - Segregation of duties matrix
+    - Key controls testing results
+    - Compliance training plan
+    - Compliance metrics and KRIs (Key Risk Indicators)
+  agent: compliance_officer
+  context:
+    - financial_planning
+
+finance_synthesis:
+  description: >
+    Synthesize all finance outputs into CFO executive summary.
+    
+    Consolidate:
+    1. Financial plan highlights
+    2. Key financial metrics and trends
+    3. Budget allocation and controls
+    4. Compliance status and risks
+    5. Strategic financial recommendations
+    6. Capital requirements
+    
+    Create executive summary for board and leadership.
+  expected_output: >
+    CFO executive summary including:
+    - Financial performance overview for {quarter}
+    - Key metrics (revenue, EBITDA, FCF, margins)
+    - Budget summary by department
+    - Variance analysis and insights
+    - Cash position and runway
+    - Compliance and audit status
+    - Capital allocation recommendations
+    - Financial risks and mitigation
+    - Strategic financial initiatives
+    - Board-ready financial dashboard
+  agent: cfo
+  context:
+    - financial_planning
+    - financial_analysis
+    - budget_management
+    - compliance_and_controls
+  output_file: outputs/cfo_summary_{quarter}.md

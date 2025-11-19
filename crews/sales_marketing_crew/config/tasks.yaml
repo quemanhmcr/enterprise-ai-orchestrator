@@ -1,0 +1,168 @@
+sales_strategy_planning:
+  description: >
+    Develop comprehensive sales strategy for {quarter} to achieve revenue target of ${revenue_target}.
+    
+    Analyze:
+    1. Current pipeline health and conversion rates
+    2. Win/loss analysis and competitive positioning
+    3. Territory and account segmentation
+    4. Sales team capacity and productivity
+    
+    Develop:
+    - Revenue forecast with upside/downside scenarios
+    - Account-based selling strategy for enterprise deals
+    - Sales process optimization and enablement plan
+    - Pricing and discount strategy
+    - Sales team OKRs and compensation plan
+    
+    Deliverable: Detailed sales plan with targets, strategies, and execution roadmap.
+  expected_output: >
+    Sales strategy document including:
+    - Revenue forecast breakdown by segment/region
+    - Target account list (ABM strategy)
+    - Sales playbooks for different buyer personas
+    - Pipeline coverage requirements (3x-4x)
+    - Sales enablement materials needed
+    - Team hiring and training plan
+    - Technology stack (CRM, sales engagement tools)
+    - Key metrics and dashboards
+    - Risk factors and mitigation
+  agent: sales_director
+  output_file: outputs/sales_strategy_{quarter}.md
+
+marketing_campaign_planning:
+  description: >
+    Design integrated marketing campaign strategy for {quarter} aligned with sales goals.
+    
+    Campaign Strategy:
+    1. Target audience segmentation and personas
+    2. Value proposition and messaging framework
+    3. Channel mix (digital, events, content, PR)
+    4. Lead generation and nurturing programs
+    5. Marketing qualified lead (MQL) targets
+    6. Budget allocation across channels
+    
+    Campaigns:
+    - Demand generation campaigns
+    - Account-based marketing (ABM) programs
+    - Product launch campaigns
+    - Customer marketing and advocacy programs
+    
+    Deliverable: Marketing plan with campaigns, budget, and lead targets.
+  expected_output: >
+    Marketing campaign plan containing:
+    - Campaign calendar for {quarter}
+    - Buyer personas and journey maps
+    - Messaging framework and positioning
+    - Channel strategy and budget allocation
+    - Lead generation targets (MQLs, SQLs)
+    - Marketing automation workflows
+    - Event and webinar schedule
+    - PR and thought leadership plan
+    - Performance metrics and ROI targets
+  agent: marketing_strategist
+  context:
+    - sales_strategy_planning
+  async_execution: true
+
+content_strategy_execution:
+  description: >
+    Create content strategy and editorial calendar to support marketing campaigns and sales enablement.
+    
+    Content Planning:
+    1. Content audit and gap analysis
+    2. SEO keyword research and optimization
+    3. Content themes and topic clusters
+    4. Content formats (blog, video, infographics, case studies)
+    5. Distribution channels and promotion strategy
+    
+    Deliverables:
+    - Editorial calendar for {quarter}
+    - Content briefs for priority pieces
+    - SEO optimization plan
+    - Social media content calendar
+    - Sales enablement content (battle cards, one-pagers)
+    
+    Focus on thought leadership and customer education.
+  expected_output: >
+    Content strategy package including:
+    - Editorial calendar with 20+ content pieces
+    - Content brief templates
+    - SEO keyword targets and optimization checklist
+    - Social media posting schedule
+    - Video content storyboards
+    - Case study and testimonial plan
+    - Sales collateral roadmap
+    - Content performance metrics (traffic, engagement, conversions)
+    - Influencer and partnership opportunities
+  agent: content_creator
+  context:
+    - marketing_campaign_planning
+
+customer_success_planning:
+  description: >
+    Develop customer success strategy to maximize retention, expansion, and advocacy.
+    
+    Success Strategy:
+    1. Customer segmentation and health scoring
+    2. Onboarding and adoption programs
+    3. Proactive engagement and QBRs
+    4. Expansion and upsell playbooks
+    5. Churn risk identification and prevention
+    6. Customer advocacy and reference programs
+    
+    Metrics:
+    - Net Revenue Retention (NRR) target: >110%
+    - Customer satisfaction (CSAT/NPS)
+    - Product adoption and usage metrics
+    - Expansion revenue targets
+    
+    Deliverable: Customer success plan with retention and expansion strategies.
+  expected_output: >
+    Customer success plan including:
+    - Customer segmentation model
+    - Health score methodology
+    - Onboarding playbook and timeline
+    - Customer success playbooks (adoption, expansion, renewal)
+    - QBR templates and cadence
+    - Early warning system for churn risk
+    - Upsell/cross-sell opportunity identification
+    - Customer advocacy program design
+    - CS team capacity planning
+    - Success metrics dashboard
+  agent: customer_success_manager
+  context:
+    - sales_strategy_planning
+
+sales_marketing_synthesis:
+  description: >
+    Synthesize all sales and marketing outputs into unified go-to-market plan.
+    
+    Consolidate:
+    1. Revenue strategy and targets
+    2. Marketing campaign highlights
+    3. Content and brand initiatives
+    4. Customer success and retention focus
+    5. Budget and resource allocation
+    6. Key metrics and success criteria
+    
+    Create executive summary for leadership alignment.
+  expected_output: >
+    Go-to-market executive summary containing:
+    - Revenue targets and forecast for {quarter}
+    - Integrated sales and marketing strategy
+    - Lead generation and pipeline goals
+    - Content and brand initiatives
+    - Customer retention and expansion plans
+    - Budget breakdown (sales, marketing, CS)
+    - Headcount and hiring needs
+    - Technology investments required
+    - Top 5 risks and mitigation strategies
+    - Key performance indicators and reporting cadence
+  agent: sales_director
+  context:
+    - sales_strategy_planning
+    - marketing_campaign_planning
+    - content_strategy_execution
+    - customer_success_planning
+  output_file: outputs/gtm_plan_{quarter}.md

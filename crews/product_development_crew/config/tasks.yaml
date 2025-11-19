@@ -1,0 +1,161 @@
+product_roadmap_planning:
+  description: >
+    Create a comprehensive product roadmap for {quarter} aligned with strategic goals: {strategic_goals}.
+    
+    Analyze:
+    1. Market research insights and competitive landscape
+    2. Customer feedback and feature requests
+    3. Technical feasibility and resource constraints
+    4. Business priorities and revenue impact
+    
+    Define:
+    - Product vision and goals for the quarter
+    - Feature prioritization using RICE framework (Reach, Impact, Confidence, Effort)
+    - Development timeline with milestones
+    - Success metrics and KPIs
+    
+    Deliverable: Detailed product roadmap with prioritized features, timelines, and business justification.
+  expected_output: >
+    A comprehensive product roadmap document including:
+    - Executive summary of product vision
+    - Prioritized feature list with RICE scores
+    - Quarter timeline with milestones
+    - Resource allocation plan
+    - Success metrics and OKRs
+    - Risk assessment and mitigation strategies
+  agent: product_manager
+  context: []
+  output_file: outputs/product_roadmap_{quarter}.md
+
+ux_design_planning:
+  description: >
+    Design user experience for top priority features from the product roadmap.
+    
+    Research & Design:
+    1. User personas and journey mapping
+    2. Information architecture and user flows
+    3. Wireframes and interactive prototypes
+    4. Accessibility and responsive design considerations
+    
+    Validate:
+    - Conduct heuristic evaluation
+    - Plan usability testing
+    - Design system consistency
+    - Mobile-first approach
+    
+    Deliverable: UX design specifications with wireframes, prototypes, and design guidelines.
+  expected_output: >
+    UX design package containing:
+    - User research summary and personas
+    - User journey maps
+    - Wireframes for key screens
+    - Interactive prototype links
+    - Design system components
+    - Accessibility checklist
+    - Usability testing plan
+  agent: ux_designer
+  context:
+    - product_roadmap_planning
+
+technical_architecture:
+  description: >
+    Design technical architecture and implementation plan for the product roadmap.
+    
+    Architecture Components:
+    1. System architecture and technology stack selection
+    2. Database schema and data models
+    3. API design and microservices architecture
+    4. Security and compliance requirements
+    5. Scalability and performance considerations
+    6. DevOps and deployment strategy
+    
+    Generate:
+    - Architecture diagrams (C4 model)
+    - Technical specifications
+    - Development estimates
+    - Risk assessment
+    - Infrastructure requirements
+    
+    Deliverable: Complete technical architecture document with implementation roadmap.
+  expected_output: >
+    Technical architecture package including:
+    - High-level architecture diagram
+    - Component design specifications
+    - Database schema and migrations
+    - API contracts (OpenAPI/Swagger)
+    - Security architecture
+    - Performance requirements
+    - Infrastructure as Code templates
+    - Development sprint breakdown
+    - Technical risk matrix
+  agent: engineering_lead
+  context:
+    - product_roadmap_planning
+    - ux_design_planning
+
+quality_assurance_strategy:
+  description: >
+    Develop comprehensive QA strategy and test plans for the product development cycle.
+    
+    Testing Strategy:
+    1. Test automation framework and tools
+    2. Unit, integration, and E2E test coverage targets
+    3. Performance and load testing scenarios
+    4. Security testing (OWASP Top 10)
+    5. Accessibility testing (WCAG 2.1)
+    6. Cross-browser and device testing matrix
+    
+    Deliverables:
+    - Test plan with coverage metrics
+    - Automated test suite architecture
+    - Performance benchmarks
+    - Bug tracking and severity classification
+    - Release quality gates
+    
+    Ensure alignment with CI/CD pipeline for continuous testing.
+  expected_output: >
+    QA strategy document containing:
+    - Test automation framework recommendation
+    - Test coverage requirements (>80% code coverage)
+    - Performance testing scenarios and SLAs
+    - Security testing checklist
+    - Accessibility testing plan (WCAG AA)
+    - Test data management strategy
+    - Bug lifecycle and severity definitions
+    - Quality gates for release approval
+    - Continuous testing integration with CI/CD
+  agent: qa_specialist
+  context:
+    - technical_architecture
+
+product_development_synthesis:
+  description: >
+    Synthesize all product development outputs into executive summary.
+    
+    Consolidate:
+    1. Product roadmap highlights and priorities
+    2. UX design approach and key innovations
+    3. Technical architecture decisions and rationale
+    4. QA strategy and quality commitments
+    5. Timeline and resource requirements
+    6. Risks and mitigation plans
+    
+    Create executive-ready summary for CEO and stakeholders.
+  expected_output: >
+    Executive summary including:
+    - Product development overview for {quarter}
+    - Key features and innovations
+    - Technical approach and architecture highlights
+    - Quality assurance commitments
+    - Timeline with major milestones
+    - Resource needs (engineering, design, QA)
+    - Budget estimate
+    - Top 5 risks and mitigation strategies
+    - Success metrics and expected business impact
+  agent: product_manager
+  context:
+    - product_roadmap_planning
+    - ux_design_planning
+    - technical_architecture
+    - quality_assurance_strategy
+  output_file: outputs/product_development_summary_{quarter}.md

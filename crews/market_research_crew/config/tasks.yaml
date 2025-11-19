@@ -1,0 +1,137 @@
+# Market Research Crew Tasks Configuration
+
+market_landscape_analysis:
+  description: >
+    Conduct comprehensive market landscape analysis for {market_segment}:
+    1. Market size and growth trends (TAM, SAM, SOM)
+    2. Market segmentation and target demographics
+    3. Key market drivers and barriers
+    4. Regulatory environment and compliance requirements
+    5. Technology trends and disruptions
+    
+    Focus period: {time_period}
+    Geographic scope: {geographic_scope}
+    
+    Use current market data as of {current_date}.
+  expected_output: >
+    Detailed market landscape report (2000-3000 words) including:
+    - Market size estimates with growth projections
+    - Segment analysis with opportunity assessment
+    - PESTEL analysis (Political, Economic, Social, Tech, Environmental, Legal)
+    - Market trends and emerging patterns
+    - Strategic recommendations
+    - Data visualizations and charts descriptions
+  agent: market_research_lead
+  async_execution: false
+  guardrails:
+    - "Must include specific market size figures with sources"
+    - "Must identify at least 3 major market trends"
+    - "Must provide growth forecasts with methodology"
+  guardrail_max_retries: 3
+
+competitive_intelligence:
+  description: >
+    Analyze competitive landscape for {market_segment}:
+    1. Identify top 5-10 competitors
+    2. Analyze competitor strengths and weaknesses
+    3. Map competitive positioning
+    4. Identify competitive gaps and opportunities
+    5. Monitor recent competitor moves and announcements
+    
+    Competitors to focus on: {competitors}
+    Analysis framework: Porter's Five Forces, SWOT
+  expected_output: >
+    Competitive intelligence report including:
+    - Competitor profiles with key metrics
+    - Competitive positioning map
+    - SWOT analysis for each major competitor
+    - Competitive gaps analysis
+    - Threat assessment (High/Medium/Low)
+    - Strategic recommendations
+  agent: competitive_analyst
+  async_execution: true
+  guardrails:
+    - "Must analyze at least 5 competitors in detail"
+    - "Must include competitive positioning matrix"
+  guardrail_max_retries: 2
+
+consumer_insights:
+  description: >
+    Analyze consumer behavior and preferences for {market_segment}:
+    1. Identify target customer personas
+    2. Analyze customer needs and pain points
+    3. Map customer journey and touchpoints
+    4. Identify behavioral trends and patterns
+    5. Assess brand perception and sentiment
+    
+    Focus demographics: {target_demographics}
+    Research methods: Surveys, social listening, trend analysis
+  expected_output: >
+    Consumer insights report including:
+    - 3-5 detailed customer personas
+    - Jobs-to-be-Done analysis
+    - Customer journey map
+    - Pain points and opportunities
+    - Behavioral insights and trends
+    - Sentiment analysis summary
+    - Recommendations for product/marketing
+  agent: consumer_insights_specialist
+  async_execution: true
+  guardrails:
+    - "Must create at least 3 customer personas"
+    - "Must identify specific pain points with supporting evidence"
+  guardrail_max_retries: 2
+
+predictive_analysis:
+  description: >
+    Perform predictive analytics and forecasting for {market_segment}:
+    1. Historical trend analysis (past 3-5 years)
+    2. Statistical modeling and forecasting
+    3. Scenario planning (best/base/worst case)
+    4. Risk assessment and sensitivity analysis
+    5. Market opportunity quantification
+    
+    Use available market data and apply appropriate models.
+    Time horizon: {forecast_horizon}
+  expected_output: >
+    Predictive analysis report including:
+    - Historical trend analysis with visualizations
+    - Forecast models with confidence intervals
+    - Scenario analysis (3 scenarios minimum)
+    - Risk factors and probabilities
+    - Opportunity sizing with TAM/SAM/SOM projections
+    - Methodology documentation
+    - Code and data sources (if applicable)
+  agent: data_scientist
+  context: [market_landscape_analysis, competitive_intelligence, consumer_insights]
+  async_execution: false
+  guardrails:
+    - "Must provide forecasts with confidence intervals"
+    - "Must include scenario planning with assumptions"
+    - "Must document methodology and data sources"
+  guardrail_max_retries: 3
+
+market_research_synthesis:
+  description: >
+    Synthesize all research findings into executive summary:
+    1. Key market insights and trends
+    2. Competitive landscape overview
+    3. Consumer insights summary
+    4. Market forecasts and opportunities
+    5. Strategic recommendations and next steps
+    
+    Audience: CEO, executive team, board of directors
+    Format: Executive briefing
+  expected_output: >
+    Executive market research briefing including:
+    - 1-page executive summary
+    - Key findings (top 10 insights)
+    - Strategic implications
+    - Opportunity assessment with priorities
+    - Risk assessment
+    - Recommended actions with timeline
+    - Appendix with methodology
+  agent: market_research_lead
+  context: [market_landscape_analysis, competitive_intelligence, consumer_insights, predictive_analysis]
+  async_execution: false
+  output_file: market_research_briefing_{market_segment}_{time_period}.md
